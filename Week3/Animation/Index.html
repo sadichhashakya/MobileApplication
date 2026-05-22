@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Moving Color Box</title>
+
+    <style>
+        body{
+            margin:0;
+            height:100vh;
+            background:white;
+            overflow:hidden;
+            position:relative;
+            font-family: Arial;
+        }
+
+        .box{
+            width:100px;
+            height:100px;
+            position:absolute;
+            top:0;
+            left:0;
+            border:2px solid black;
+
+            animation:
+            moveBox 20s infinite linear,
+            colorChange 20s infinite linear;
+
+            animation-play-state: running;
+        }
+
+        @keyframes moveBox{
+            0%{ top:0; left:0; }
+            25%{ top:calc(100vh - 100px); left:calc(100vw - 100px); }
+            50%{ top:calc(100vh - 100px); left:0; }
+            75%{ top:0; left:calc(100vw - 100px); }
+            100%{ top:0; left:0; }
+        }
+
+        @keyframes colorChange{
+            0%{ background:red; }
+            25%{ background:blue; }
+            50%{ background:green; }
+            75%{ background:orange; }
+            100%{ background:red; }
+        }
+
+        /* Buttons */
+        .controls{
+            position:fixed;
+            top:50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+
+        button{
+            padding:10px 15px;
+            margin-right:10px;
+            cursor:pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="controls">
+    <button onclick="startAnimation()">Start</button>
+    <button onclick="stopAnimation()">Stop</button>
+</div>
+
+<div class="box" id="box"></div>
+
+<script>
+    const box = document.getElementById("box");
+
+    function startAnimation() {
+        box.style.animationPlayState = "running";
+    }
+
+    function stopAnimation() {
+        box.style.animationPlayState = "paused";
+    }
+</script>
+
+</body>
+</html>

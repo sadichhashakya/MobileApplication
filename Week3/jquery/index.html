@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sadichha Shakya - Profile</title>
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet" />
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    body{
+      font-family:'DM Sans',sans-serif;
+      background:#f4f1fd;
+      min-height:100vh;
+      padding:40px 20px;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:24px;
+    }
+
+    h1{
+      font-size:26px;
+      color:#3b1f6e;
+      letter-spacing:-0.5px;
+    }
+
+    /* Profile Card */
+
+    #profile-card{
+      width:380px;
+      background:#ffffff;
+      border-radius:16px;
+      padding:28px;
+      box-shadow:0 4px 20px rgba(90,50,160,0.1);
+      text-align:center;
+    }
+
+    #profile-photo{
+      width:120px;
+      height:120px;
+      border-radius:14px;
+      object-fit:cover;
+      border:3px solid #9b72cf;
+      margin-bottom:14px;
+      transition:0.4s;
+    }
+
+    #student-name{
+      font-size:22px;
+      font-weight:700;
+      color:#3b1f6e;
+      margin-bottom:8px;
+    }
+
+    #student-bio{
+      font-size:14px;
+      color:#666;
+      line-height:1.6;
+      margin-bottom:16px;
+    }
+
+    #nickname-input{
+      width:100%;
+      padding:10px 14px;
+      border:1.5px solid #d4bff7;
+      border-radius:10px;
+      font-size:14px;
+      margin-bottom:20px;
+      outline:none;
+    }
+
+    #nickname-input:focus{
+      border-color:#9b72cf;
+    }
+
+    h3{
+      font-size:13px;
+      text-transform:uppercase;
+      color:#9b72cf;
+      margin-bottom:10px;
+    }
+
+    #skills-list{
+      list-style:none;
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      justify-content:center;
+    }
+
+    #skills-list li{
+      background:#f0e8ff;
+      color:#5e2d9e;
+      padding:6px 14px;
+      border-radius:20px;
+      font-size:13px;
+      font-weight:600;
+    }
+
+    /* Buttons */
+
+    .buttons{
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:center;
+      gap:8px;
+      max-width:700px;
+    }
+
+    button{
+      padding:9px 15px;
+      border:1.5px solid #d4bff7;
+      border-radius:10px;
+      background:white;
+      color:#5e2d9e;
+      font-size:13px;
+      font-weight:600;
+      cursor:pointer;
+      transition:.2s;
+    }
+
+    button:hover{
+      background:#9b72cf;
+      color:white;
+      transform:translateY(-2px);
+    }
+
+    /* Output */
+
+    #output{
+      width:380px;
+      background:white;
+      border:1.5px solid #e0d0f8;
+      border-radius:12px;
+      padding:14px 18px;
+      font-size:14px;
+      min-height:50px;
+      color:#555;
+    }
+
+    /* Utility Classes */
+
+    .highlighted{
+      border:3px solid #f9c74f;
+    }
+
+    .dark-mode{
+      background:#1e1e2e !important;
+      color:#e0e0e0 !important;
+    }
+
+    .dark-mode #student-name{
+      color:#d4bff7;
+    }
+
+    .dark-mode #student-bio{
+      color:#bfbfbf;
+    }
+
+    .rounded{
+      border-radius:50% !important;
+    }
+
+  </style>
+</head>
+
+<body>
+
+<h1>Sadichha Shakya</h1>
+
+<div id="profile-card">
+
+  <img
+    id="profile-photo"
+    src="images/photo.jpg"
+    alt="Profile Photo"
+  >
+
+  <h2 id="student-name">
+    Sadichha Shakya
+  </h2>
+
+  <p id="student-bio">
+    <strong>Creative Web Designer</strong><br>
+    Passionate about HTML, CSS, JavaScript and jQuery animations.
+  </p>
+
+  <input
+    type="text"
+    id="nickname-input"
+    placeholder="Enter nickname..."
+  >
+
+  <h3>Skills</h3>
+
+  <ul id="skills-list">
+    <li>HTML</li>
+    <li>CSS</li>
+    <li>JavaScript</li>
+    <li>jQuery</li>
+  </ul>
+
+</div>
+
+
+<!-- Buttons -->
+
+<div class="buttons">
+
+  <button id="show-name">Show Name</button>
+  <button id="change-name">Change Name</button>
+  <button id="show-bio">Show Bio</button>
+  <button id="get-input">Get Input</button>
+  <button id="set-input">Set Input</button>
+
+  <button id="highlight-card">Highlight</button>
+  <button id="remove-highlight">Remove Highlight</button>
+  <button id="toggle-dark">Dark Mode</button>
+  <button id="toggle-rounded">Rounded Photo</button>
+  <button id="purple-bg">Purple BG</button>
+  <button id="reset-bg">Reset BG</button>
+
+  <button id="hide-photo">Hide Photo</button>
+  <button id="show-photo">Show Photo</button>
+  <button id="toggle-bio">Toggle Bio</button>
+  <button id="fade-out">Fade Out</button>
+  <button id="fade-in">Fade In</button>
+  <button id="fade-half">Fade 50%</button>
+
+  <button id="slide-up">Slide Up</button>
+  <button id="slide-down">Slide Down</button>
+  <button id="slide-toggle">Slide Toggle</button>
+  <button id="animate-card">Animate Card</button>
+
+</div>
+
+
+<div id="output">
+  Output will appear here...
+</div>
+
+
+<script>
+
+$(document).ready(function(){
+
+  $("#show-name").click(function(){
+    $("#output").text(
+      "Name: " +
+      $("#student-name").text()
+    );
+  });
+
+  $("#change-name").click(function(){
+    $("#student-name").text(
+      "Sadichha Shakya"
+    );
+
+    $("#output").text(
+      "Name reset."
+    );
+  });
+
+  $("#show-bio").click(function(){
+    $("#output").text(
+      $("#student-bio").text()
+    );
+  });
+
+  $("#get-input").click(function(){
+
+    let val=$("#nickname-input").val();
+
+    $("#output").text(
+      val ?
+      "Nickname: "+val :
+      "Input empty"
+    );
+
+  });
+
+  $("#set-input").click(function(){
+
+    $("#nickname-input").val(
+      "jQuery Pro"
+    );
+
+    $("#output").text(
+      "Nickname added"
+    );
+
+  });
+
+
+  $("#highlight-card").click(function(){
+
+    $("#profile-card").addClass(
+      "highlighted"
+    );
+
+    $("#output").text(
+      "Highlight added"
+    );
+
+  });
+
+  $("#remove-highlight").click(function(){
+
+    $("#profile-card").removeClass(
+      "highlighted"
+    );
+
+    $("#output").text(
+      "Highlight removed"
+    );
+
+  });
+
+  $("#toggle-dark").click(function(){
+
+    $("#profile-card").toggleClass(
+      "dark-mode"
+    );
+
+  });
+
+  $("#toggle-rounded").click(function(){
+
+    $("#profile-photo").toggleClass(
+      "rounded"
+    );
+
+  });
+
+  $("#purple-bg").click(function(){
+
+    $("#profile-card").css(
+      "background",
+      "#ede0ff"
+    );
+
+  });
+
+  $("#reset-bg").click(function(){
+
+    $("#profile-card").css(
+      "background",
+      "#ffffff"
+    );
+
+  });
+
+
+  $("#hide-photo").click(function(){
+
+    $("#profile-photo").hide(
+      "slow"
+    );
+
+  });
+
+  $("#show-photo").click(function(){
+
+    $("#profile-photo").show(
+      "slow"
+    );
+
+  });
+
+  $("#toggle-bio").click(function(){
+
+    $("#student-bio").toggle();
+
+  });
+
+  $("#fade-out").click(function(){
+
+    $("#profile-card").fadeOut();
+
+  });
+
+  $("#fade-in").click(function(){
+
+    $("#profile-card").fadeIn();
+
+  });
+
+  $("#fade-half").click(function(){
+
+    $("#profile-card").fadeTo(
+      800,
+      0.5
+    );
+
+  });
+
+
+  $("#slide-up").click(function(){
+
+    $("#skills-list").slideUp();
+
+  });
+
+  $("#slide-down").click(function(){
+
+    $("#skills-list").slideDown();
+
+  });
+
+  $("#slide-toggle").click(function(){
+
+    $("#skills-list").slideToggle();
+
+  });
+
+  $("#animate-card").click(function(){
+
+    $("#profile-card")
+    .animate(
+      {marginLeft:"150px"},
+      500
+    )
+    .animate(
+      {marginLeft:"0px"},
+      500
+    );
+
+  });
+
+});
+
+</script>
+
+</body>
+</html>
