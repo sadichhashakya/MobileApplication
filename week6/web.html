@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Firebase CRUD</title>
+
+    <style>
+      body {
+        font-family: Arial;
+        padding: 20px;
+      }
+
+      input {
+        display: block;
+        margin: 8px 0;
+        padding: 8px;
+        width: 300px;
+      }
+
+      button {
+        padding: 10px;
+        margin: 5px;
+        cursor: pointer;
+      }
+
+      #output {
+        margin-top: 20px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        white-space: pre-wrap;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h2>Firebase CRUD Operations</h2>
+
+    <input type="text" id="userId" placeholder="User ID" />
+    <input type="text" id="firstname" placeholder="First Name" />
+    <input type="text" id="lastname" placeholder="Last Name" />
+    <input type="text" id="address" placeholder="Address" />
+    <input type="text" id="contact" placeholder="Contact" />
+    <input type="date" id="dob" />
+    <input type="number" id="age" placeholder="Age" />
+    <input type="email" id="email" placeholder="Email" />
+    <input type="text" id="field" placeholder="Field" />
+
+    <button id="setBtn">Set Data</button>
+    <button id="getBtn">Get User</button>
+    <button id="updateBtn">Update User</button>
+    <button id="deleteBtn">Delete User</button>
+    <button id="snapshotBtn">Get All Users</button>
+
+    <div id="output"></div>
+
+    <script type="module" src="webpage.js"></script>
+  </body>
+</html>
