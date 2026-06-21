@@ -39,7 +39,6 @@ document.getElementById("submitBtn").addEventListener("click", function () {
   const message = document.getElementById("message").value.trim();
   const result = document.getElementById("result");
 
-  // Validation
   if (!firstname || !lastname || !email || !message) {
     result.style.color = "red";
     result.innerHTML = "Please fill all fields!";
