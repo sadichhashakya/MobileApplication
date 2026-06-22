@@ -1,0 +1,318 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+
+    <title>StyleFit – Outfit Recommender</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- ── SCREEN 1: Splash ── -->
+    <div class="screen active" id="screen-splash">
+      <div class="splash-inner">
+        <div class="logo-badge">SF</div>
+        <h1 class="brand-name">StyleFit</h1>
+        <p class="brand-tagline">
+          Outfits made for your<br />
+          <em>body shape &amp; style</em>
+        </p>
+        <button
+          class="btn-primary"
+          style="margin-top: 24px"
+          onclick="goTo('screen-gender')"
+        >
+          Find My Style
+        </button>
+        <p class="hint">May take a minute</p>
+      </div>
+    </div>
+
+    <!-- ── SCREEN 2: Gender ── -->
+    <div class="screen" id="screen-gender">
+      <div class="screen-inner">
+        <button class="back-btn" onclick="goBack('screen-splash')">
+          ← Back
+        </button>
+        <h2 class="screen-title">How do you Identify?</h2>
+
+        <div class="option-grid three">
+          <button
+            class="option-card"
+            data-value="Male"
+            onclick="selectGender(this)"
+          >
+            <span class="icon-figure">♂</span>
+            <span>Male</span>
+          </button>
+          <button
+            class="option-card"
+            data-value="Female"
+            onclick="selectGender(this)"
+          >
+            <span class="icon-figure">♀</span>
+            <span>Female</span>
+          </button>
+          <button
+            class="option-card wide"
+            data-value="Others"
+            onclick="selectGender(this)"
+          >
+            <span class="icon-figure">⚧</span>
+            <span>Others</span>
+          </button>
+        </div>
+
+        <button
+          class="btn-primary"
+          id="btn-gender"
+          disabled
+          onclick="goTo('screen-body')"
+        >
+          Next
+        </button>
+      </div>
+    </div>
+
+    <!-- ── SCREEN 3: Body Shape ── -->
+    <div class="screen" id="screen-body">
+      <div class="screen-inner">
+        <button class="back-btn" onclick="goBack('screen-gender')">
+          ← Back
+        </button>
+        <h2 class="screen-title">What's your body shape?</h2>
+        <button class="guide-link" onclick="toggleGuide()">
+          See Body Type Guide ▾
+        </button>
+
+        <div class="guide-panel" id="guide-panel" hidden>
+          <p>
+            <strong>Hourglass</strong> – Shoulders &amp; hips roughly equal,
+            defined waist.
+          </p>
+          <p><strong>Pear</strong> – Hips wider than shoulders.</p>
+          <p>
+            <strong>Rectangle</strong> – Shoulders, waist &amp; hips roughly the
+            same width.
+          </p>
+          <p><strong>Apple</strong> – Fuller midsection, narrower hips.</p>
+          <p><strong>Inverted</strong> – Shoulders wider than hips.</p>
+        </div>
+
+        <div class="pill-list" id="body-list">
+          <button
+            class="pill"
+            data-value="Hourglass"
+            onclick="selectPill(this, 'body')"
+          >
+            Hourglass
+          </button>
+          <button
+            class="pill"
+            data-value="Pear"
+            onclick="selectPill(this, 'body')"
+          >
+            Pear
+          </button>
+          <button
+            class="pill"
+            data-value="Rectangle"
+            onclick="selectPill(this, 'body')"
+          >
+            Rectangle
+          </button>
+          <button
+            class="pill"
+            data-value="Apple"
+            onclick="selectPill(this, 'body')"
+          >
+            Apple
+          </button>
+          <button
+            class="pill"
+            data-value="Inverted"
+            onclick="selectPill(this, 'body')"
+          >
+            Inverted
+          </button>
+        </div>
+
+        <button
+          class="btn-primary"
+          id="btn-body"
+          disabled
+          onclick="goTo('screen-dressup')"
+        >
+          Next
+        </button>
+      </div>
+    </div>
+
+    <!-- ── SCREEN 4: Dress-up Type ── -->
+    <div class="screen" id="screen-dressup">
+      <div class="screen-inner">
+        <button class="back-btn" onclick="goBack('screen-body')">← Back</button>
+        <h2 class="screen-title">Type of dress-up you want?</h2>
+        <p class="sub-hint">Pick all that apply</p>
+
+        <div class="pill-grid" id="dressup-list">
+          <button
+            class="pill"
+            data-value="Casual/Daywear"
+            onclick="togglePill(this, 'dressup')"
+          >
+            Casual/Daywear
+          </button>
+          <button
+            class="pill"
+            data-value="Work/Office"
+            onclick="togglePill(this, 'dressup')"
+          >
+            Work/Office
+          </button>
+          <button
+            class="pill"
+            data-value="Formal/Event"
+            onclick="togglePill(this, 'dressup')"
+          >
+            Formal/Event
+          </button>
+          <button
+            class="pill"
+            data-value="Gym/Sport"
+            onclick="togglePill(this, 'dressup')"
+          >
+            Gym/Sport
+          </button>
+          <button
+            class="pill"
+            data-value="Travel"
+            onclick="togglePill(this, 'dressup')"
+          >
+            Travel
+          </button>
+          <button
+            class="pill"
+            data-value="Party"
+            onclick="togglePill(this, 'dressup')"
+          >
+            Party
+          </button>
+          <button
+            class="pill"
+            data-value="Holiday"
+            onclick="togglePill(this, 'dressup')"
+          >
+            Holiday
+          </button>
+          <button
+            class="pill"
+            data-value="Date Night"
+            onclick="togglePill(this, 'dressup')"
+          >
+            Date Night
+          </button>
+        </div>
+
+        <button
+          class="btn-primary"
+          id="btn-dressup"
+          disabled
+          onclick="goTo('screen-vibe')"
+        >
+          Next
+        </button>
+      </div>
+    </div>
+
+    <!-- ── SCREEN 5: Vibe ── -->
+    <div class="screen" id="screen-vibe">
+      <div class="screen-inner">
+        <button class="back-btn" onclick="goBack('screen-dressup')">
+          ← Back
+        </button>
+        <h2 class="screen-title">Your Vibe?</h2>
+        <p class="sub-hint">Pick all that apply</p>
+
+        <div class="pill-grid" id="vibe-list">
+          <button
+            class="pill"
+            data-value="Classic"
+            onclick="togglePill(this, 'vibe')"
+          >
+            Classic
+          </button>
+          <button
+            class="pill"
+            data-value="Bold"
+            onclick="togglePill(this, 'vibe')"
+          >
+            Bold
+          </button>
+          <button
+            class="pill"
+            data-value="Minimal"
+            onclick="togglePill(this, 'vibe')"
+          >
+            Minimal
+          </button>
+          <button
+            class="pill"
+            data-value="Romantic"
+            onclick="togglePill(this, 'vibe')"
+          >
+            Romantic
+          </button>
+          <button
+            class="pill"
+            data-value="Streetwear"
+            onclick="togglePill(this, 'vibe')"
+          >
+            Streetwear
+          </button>
+          <button
+            class="pill"
+            data-value="Boho"
+            onclick="togglePill(this, 'vibe')"
+          >
+            Boho
+          </button>
+        </div>
+
+        <button
+          class="btn-primary"
+          id="btn-vibe"
+          disabled
+          onclick="submitAndShow()"
+        >
+          See My Looks →
+        </button>
+      </div>
+    </div>
+
+    <!-- ── SCREEN 6: Results ── -->
+    <div class="screen" id="screen-results">
+      <div class="screen-inner results-inner">
+        <button class="back-btn" onclick="goBack('screen-vibe')">← Back</button>
+        <h2 class="screen-title accent">Your Look</h2>
+        <p class="results-sub" id="results-sub"></p>
+        <p class="results-tip" id="results-tip"></p>
+        <div id="results-cards"></div>
+        <button class="btn-primary mt-lg" onclick="restart()">
+          Start Over
+        </button>
+      </div>
+    </div>
+
+    <!-- ── Loading overlay ── -->
+    <div class="loading-overlay" id="loading" hidden>
+      <div class="spinner"></div>
+      <p>Saving your style…</p>
+    </div>
+
+    <script type="module" src="app.js"></script>
+  </body>
+</html>
