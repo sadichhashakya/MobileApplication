@@ -1,0 +1,308 @@
+/* ─────────────────────────────────────────
+   StyleFit — Universal Mobile Responsive
+───────────────────────────────────────── */
+
+:root {
+  --accent: #c8855a;
+  --accent-light: #f5e8df;
+  --ink: #1a1814;
+  --surface: #ffffff;
+  --bg: #f7f4ef;
+  --muted: #6b6660;
+  --light-text: #b4b0aa;
+  --border: rgba(26, 24, 20, 0.12);
+
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-pill: 100px;
+
+  --font-heading: Georgia, "Times New Roman", serif;
+  --font-body: "Segoe UI", system-ui, sans-serif;
+}
+
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  min-height: 100%;
+  overflow: hidden;
+  font-family: var(--font-body);
+  background: var(--bg);
+}
+
+/* Fix viewport for all devices */
+body {
+  min-height: 100vh;
+  min-height: -webkit-fill-available;
+}
+
+/* Main screen */
+.screen {
+  display: none;
+  width: 100%;
+  min-height: 100vh;
+  min-height: -webkit-fill-available;
+  background: var(--surface);
+}
+
+.screen.active {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Inner container */
+.screen-inner {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: env(safe-area-inset-top, 20px) 20px env(safe-area-inset-bottom, 20px);
+  gap: 14px;
+  overflow-y: auto;
+}
+
+/* Splash */
+.splash-inner {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+  text-align: center;
+  padding: 20px;
+}
+
+.logo-badge {
+  width: 70px;
+  height: 70px;
+  background: var(--ink);
+  color: white;
+  border-radius: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+}
+
+.brand-name {
+  font-size: clamp(28px, 6vw, 36px);
+}
+
+.brand-tagline {
+  font-size: clamp(13px, 3vw, 16px);
+  line-height: 1.5;
+}
+
+.brand-tagline em {
+  color: var(--accent);
+}
+
+/* Titles */
+.screen-title {
+  font-size: clamp(20px, 5vw, 26px);
+  line-height: 1.2;
+}
+
+.screen-title.accent {
+  color: var(--accent);
+}
+
+.sub-hint {
+  font-size: 12px;
+  color: var(--light-text);
+}
+
+/* Buttons */
+.btn-primary {
+  width: 100%;
+  padding: 15px;
+  border: none;
+  border-radius: var(--radius-pill);
+  background: var(--ink);
+  color: white;
+  font-size: 15px;
+  margin-top: auto;
+}
+
+.btn-primary:disabled {
+  opacity: 0.4;
+}
+
+/* Back */
+.back-btn {
+  border: none;
+  background: none;
+  font-size: 14px;
+  color: var(--muted);
+  width: fit-content;
+}
+
+/* Gender */
+.option-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.option-card {
+  padding: 18px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--bg);
+}
+
+.option-card.wide {
+  grid-column: span 2;
+}
+
+.option-card.selected {
+  background: var(--accent-light);
+  border-color: var(--accent);
+}
+
+/* Pills */
+.pill-list,
+.pill-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.pill {
+  flex: 1 1 calc(50% - 10px);
+  min-width: 130px;
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-pill);
+  background: var(--bg);
+  text-align: center;
+  font-size: 13px;
+}
+
+.pill.selected {
+  background: var(--accent);
+  color: white;
+}
+
+/* Guide */
+.guide-panel {
+  background: var(--accent-light);
+  padding: 14px;
+  border-radius: var(--radius-md);
+}
+
+.guide-panel p {
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+/* Results */
+.results-inner {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.results-sub {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.results-tip {
+  font-size: 12px;
+  background: var(--accent-light);
+  padding: 12px;
+  border-radius: var(--radius-md);
+}
+
+/* Scroll area */
+#results-cards {
+  flex: 1;
+  overflow-y: auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.result-card {
+  background: var(--bg);
+  padding: 14px;
+  border-radius: var(--radius-md);
+}
+
+.result-card-title {
+  color: var(--accent);
+  margin-bottom: 8px;
+}
+
+.result-card-items span {
+  display: block;
+  font-size: 13px;
+  margin-bottom: 4px;
+}
+
+/* Loading */
+.loading-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.85);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.loading-overlay[hidden] {
+  display: none;
+}
+
+.spinner {
+  width: 36px;
+  height: 36px;
+  border: 3px solid #ddd;
+  border-top: 3px solid var(--accent);
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Small phones */
+@media (max-width: 360px) {
+  .screen-inner {
+    padding: 18px;
+  }
+
+  .pill {
+    min-width: 100%;
+  }
+
+  .option-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .option-card.wide {
+    grid-column: span 1;
+  }
+}
+
+/* Tablets */
+@media (min-width: 768px) {
+  .screen-inner,
+  .splash-inner {
+    max-width: 500px;
+    margin: auto;
+  }
+}
